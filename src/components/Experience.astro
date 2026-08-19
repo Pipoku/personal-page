@@ -1,0 +1,140 @@
+---
+import { experience } from '../data/cv.js';
+---
+
+<section id="experience" class="container">
+  <div class="section-head reveal">
+    <span class="kicker" data-i18n="exp.kicker">// experience</span>
+    <h2 data-i18n="exp.title">Where I've been building</h2>
+  </div>
+
+  <div class="timeline">
+    {experience.map((job, i) => (
+      <article class="timeline__item reveal" style={`--d:${i * 0.08}s`}>
+        <div class="timeline__dot" aria-hidden="true"></div>
+        <div class="glass timeline__card">
+          <div class="timeline__head">
+            <div>
+              <h3 class="timeline__role" data-i18n={`exp.${i}.role`}>{job.role}</h3>
+              <p class="timeline__company">{job.company} · <span class="timeline__meta" data-i18n={`exp.${i}.meta`}>{job.meta}</span></p>
+            </div>
+            <span class="timeline__period">{job.period}</span>
+          </div>
+          <ul class="timeline__bullets">
+            {job.bullets.map((b, bi) => (
+              <li data-i18n={`exp.${i}.b${bi}`}>{b}</li>
+            ))}
+          </ul>
+        </div>
+      </article>
+    ))}
+  </div>
+</section>
+
+<style>
+  .timeline {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 1.4rem;
+    padding-left: 2rem;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0.55rem;
+    top: 0.4rem;
+    bottom: 0.4rem;
+    width: 2px;
+    background: linear-gradient(180deg, var(--accent-1), var(--accent-2), var(--accent-3));
+    opacity: 0.7;
+    border-radius: 2px;
+  }
+
+  .timeline__item {
+    position: relative;
+  }
+
+  .timeline__dot {
+    position: absolute;
+    left: -2rem;
+    top: 1.6rem;
+    width: 0.75rem;
+    height: 0.75rem;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 2px solid var(--accent-2);
+    box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent-2) 25%, transparent);
+  }
+
+  .timeline__card {
+    padding: 1.6rem 1.8rem;
+    transition: transform 0.3s var(--ease), border-color 0.3s, background 0.3s;
+  }
+
+  .timeline__card:hover {
+    transform: translateY(-3px);
+    border-color: color-mix(in srgb, var(--accent-1) 45%, var(--glass-border));
+    background: var(--glass-strong);
+  }
+
+  .timeline__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1.1rem;
+    flex-wrap: wrap;
+  }
+
+  .timeline__role {
+    font-size: 1.15rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+
+  .timeline__company {
+    margin-top: 0.25rem;
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+
+  .timeline__meta {
+    color: var(--faint);
+    font-size: 0.82rem;
+  }
+
+  .timeline__period {
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    color: var(--accent-2);
+    background: color-mix(in srgb, var(--accent-2) 10%, transparent);
+    border: 1px solid color-mix(in srgb, var(--accent-2) 25%, transparent);
+    padding: 0.3rem 0.8rem;
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+
+  .timeline__bullets {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+  }
+
+  .timeline__bullets li {
+    position: relative;
+    padding-left: 1.4rem;
+    color: var(--muted);
+    font-size: 0.95rem;
+  }
+
+  .timeline__bullets li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--accent-1);
+    font-family: var(--font-mono);
+  }
+</style>

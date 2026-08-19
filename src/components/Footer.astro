@@ -1,0 +1,71 @@
+---
+import { profile } from '../data/cv.js';
+const year = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <div class="container footer__inner">
+    <p class="footer__name">
+      © {year} {profile.name}
+    </p>
+    <p class="footer__tag">
+      <span data-i18n="footer.tag">Crafted with Astro, Three.js & a lot of </span><span class="footer__heart" data-i18n="footer.word">coffee.</span>
+    </p>
+    <div class="footer__links">
+      <a href={profile.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a href={profile.github} target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a href={profile.email}>Email</a>
+      <a href="/cv.pdf" download>CV</a>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    border-top: 1px solid var(--glass-border);
+    padding-block: 2rem;
+    margin-top: 2rem;
+  }
+
+  .footer__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .footer__name {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+
+  .footer__tag {
+    font-size: 0.85rem;
+    color: var(--faint);
+  }
+
+  .footer__heart {
+    background: linear-gradient(120deg, var(--accent-1), var(--accent-3));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 600;
+  }
+
+  .footer__links {
+    display: flex;
+    gap: 1.2rem;
+  }
+
+  .footer__links a {
+    font-size: 0.85rem;
+    color: var(--muted);
+    transition: color 0.25s;
+  }
+
+  .footer__links a:hover {
+    color: var(--accent-2);
+  }
+</style>

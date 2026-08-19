@@ -1,0 +1,79 @@
+---
+import { certifications } from '../data/cv.js';
+---
+
+<section id="certifications" class="container">
+  <div class="section-head reveal">
+    <span class="kicker" data-i18n="certs.kicker">// certifications</span>
+    <h2 data-i18n="certs.title">Proof of the grind</h2>
+  </div>
+
+  <div class="certs__grid">
+    {certifications.map((cert, i) => (
+      <div class="glass cert reveal" style={`--d:${i * 0.05}s`}>
+        <span class="cert__badge" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2l7 3v6c0 4.5-3 8.5-7 10-4-1.5-7-5.5-7-10V5l7-3z" />
+            <path d="M9 12l2 2 4-4" />
+          </svg>
+        </span>
+        <div>
+          <h3 class="cert__name" data-i18n={`certs.${i}`}>{cert.name}</h3>
+          <p class="cert__issuer">{cert.issuer}</p>
+        </div>
+        <span class="cert__date">{cert.date}</span>
+      </div>
+    ))}
+  </div>
+</section>
+
+<style>
+  .certs__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1rem;
+  }
+
+  .cert {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.2rem 1.4rem;
+    transition: transform 0.3s var(--ease), border-color 0.3s;
+  }
+
+  .cert:hover {
+    transform: translateY(-3px);
+    border-color: color-mix(in srgb, var(--accent-3) 45%, var(--glass-border));
+  }
+
+  .cert__badge {
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    width: 2.6rem;
+    height: 2.6rem;
+    border-radius: 0.8rem;
+    color: var(--accent-2);
+    background: color-mix(in srgb, var(--accent-2) 10%, transparent);
+    border: 1px solid color-mix(in srgb, var(--accent-2) 25%, transparent);
+  }
+
+  .cert__name {
+    font-size: 0.98rem;
+    font-weight: 600;
+  }
+
+  .cert__issuer {
+    color: var(--muted);
+    font-size: 0.85rem;
+  }
+
+  .cert__date {
+    margin-left: auto;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--faint);
+    white-space: nowrap;
+  }
+</style>

@@ -1,0 +1,184 @@
+---
+import { profile } from '../data/cv.js';
+---
+
+<section id="contact" class="container">
+  <div class="glass contact reveal">
+    <div class="contact__info">
+      <span class="kicker" data-i18n="contact.kicker">// contact</span>
+      <h2 data-i18n="contact.title">Let's build something fast together</h2>
+      <p data-i18n="contact.text">
+        Got a headless CMS project, a legacy platform to modernize, or just want to talk shop about
+        Drupal, React and APIs? My inbox is open.
+      </p>
+      <div class="contact__links">
+        <a href={`mailto:${profile.email}`} class="contact__link">
+          <span class="contact__link-label" data-i18n="contact.email">Email</span>
+          <span class="contact__link-value">{profile.email}</span>
+        </a>
+        <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" class="contact__link">
+          <span class="contact__link-label" data-i18n="contact.linkedin">LinkedIn</span>
+          <span class="contact__link-value">in/renzo-emiliano-carletti</span>
+        </a>
+        <a href={`tel:${profile.phone.replace(/\s/g, '')}`} class="contact__link">
+          <span class="contact__link-label" data-i18n="contact.phone">Phone</span>
+          <span class="contact__link-value">{profile.phone}</span>
+        </a>
+      </div>
+      <a class="btn btn--ghost" href="/cv.pdf" data-i18n="nav.download" download>Download CV</a>
+    </div>
+
+    <form id="contact-form" class="contact__form" data-email={profile.email} novalidate>
+      <label class="field">
+        <span data-i18n="contact.form.name">Name</span>
+        <input type="text" name="name" required placeholder="Your name" autocomplete="name" data-i18n-attr="placeholder" data-i18n="contact.form.namePh" />
+      </label>
+      <label class="field">
+        <span data-i18n="contact.form.email">Email</span>
+        <input type="email" name="email" required placeholder="you@company.com" autocomplete="email" data-i18n-attr="placeholder" data-i18n="contact.form.emailPh" />
+      </label>
+      <label class="field">
+        <span data-i18n="contact.form.subject">Subject</span>
+        <input type="text" name="subject" required placeholder="What's this about?" data-i18n-attr="placeholder" data-i18n="contact.form.subjectPh" />
+      </label>
+      <label class="field">
+        <span data-i18n="contact.form.message">Message</span>
+        <textarea name="message" rows="5" required placeholder="Tell me about your project..." data-i18n-attr="placeholder" data-i18n="contact.form.messagePh"></textarea>
+      </label>
+      <button type="submit" class="btn btn--primary contact__submit" data-i18n="contact.submit">Send message</button>
+      <p class="contact__hint" role="status" aria-live="polite" data-i18n="contact.hint">
+        Form opens your email client with the message pre-filled — nothing is stored anywhere.
+      </p>
+    </form>
+  </div>
+</section>
+
+<style>
+  .contact {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    padding: 2.5rem;
+  }
+
+  .contact__info p {
+    color: var(--muted);
+    margin-top: 1rem;
+    max-width: 42ch;
+  }
+
+  .contact__links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    margin: 1.8rem 0;
+  }
+
+  .contact__link {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 0.7rem 0.2rem;
+    border-bottom: 1px solid var(--glass-border);
+    transition: border-color 0.25s;
+  }
+
+  .contact__link:hover {
+    border-color: color-mix(in srgb, var(--accent-2) 50%, transparent);
+  }
+
+  .contact__link-label {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--faint);
+  }
+
+  .contact__link-value {
+    font-size: 0.92rem;
+    color: var(--text);
+    word-break: break-word;
+    text-align: right;
+  }
+
+  .contact__form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+  }
+
+  .field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .field span {
+    font-size: 0.8rem;
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--faint);
+  }
+
+  .field input,
+  .field textarea {
+    font: inherit;
+    color: var(--text);
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-sm);
+    padding: 0.8rem 1rem;
+    transition: border-color 0.25s, background 0.25s;
+    resize: vertical;
+  }
+
+  .field input:focus,
+  .field textarea:focus {
+    outline: none;
+    border-color: var(--accent-2);
+    background: var(--glass-strong);
+  }
+
+  .contact__submit {
+    align-self: flex-start;
+    margin-top: 0.3rem;
+  }
+
+  .contact__hint {
+    font-size: 0.78rem;
+    color: var(--faint);
+  }
+
+  @media (max-width: 860px) {
+    .contact {
+      grid-template-columns: 1fr;
+      padding: 1.8rem;
+    }
+  }
+</style>
+
+<script>
+  import { currentLang } from '../scripts/i18n.js';
+  import { translations, defaultLang } from '../i18n/translations.js';
+
+  const form = document.getElementById('contact-form');
+  const status = document.querySelector('.contact__hint');
+  const email = form.dataset.email;
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const data = new FormData(form);
+    const subject = `[Portfolio] ${data.get('subject')}`;
+    const body =
+      `Name: ${data.get('name')}\nEmail: ${data.get('email')}\n\n` +
+      `${data.get('message')}`;
+
+    window.location.href = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+    const dict = translations[currentLang()] ?? translations[defaultLang];
+    status.textContent = dict['contact.opening'] + email;
+  });
+</script>

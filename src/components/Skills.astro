@@ -1,0 +1,76 @@
+---
+import { skills } from '../data/cv.js';
+---
+
+<section id="skills" class="container">
+  <div class="section-head reveal">
+    <span class="kicker" data-i18n="skills.kicker">// toolkit</span>
+    <h2 data-i18n="skills.title">What I work with</h2>
+  </div>
+
+  <div class="skills__grid">
+    {skills.map((group, gi) => (
+      <div class="glass skills__group reveal" style={`--d:${gi * 0.06}s`}>
+        <h3 class="skills__group-title" data-i18n={`skills.g${gi}`}>{group.group}</h3>
+        <div class="skills__tags">
+          {group.items.map((item) => (
+            <span class="skills__tag">{item}</span>
+          ))}
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
+
+<style>
+  .skills__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.2rem;
+  }
+
+  .skills__group {
+    padding: 1.6rem 1.8rem;
+  }
+
+  .skills__group-title {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .skills__group-title::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: 2px;
+    background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+    display: inline-block;
+  }
+
+  .skills__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .skills__tag {
+    font-size: 0.83rem;
+    padding: 0.4rem 0.85rem;
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--accent-1) 8%, transparent);
+    border: 1px solid var(--glass-border);
+    color: var(--muted);
+    transition: transform 0.25s var(--ease), color 0.25s, border-color 0.25s, background 0.25s;
+  }
+
+  .skills__tag:hover {
+    transform: translateY(-2px);
+    color: var(--text);
+    border-color: color-mix(in srgb, var(--accent-2) 50%, transparent);
+    background: color-mix(in srgb, var(--accent-2) 12%, transparent);
+  }
+</style>
