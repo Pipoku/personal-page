@@ -12,20 +12,27 @@ import { experience } from '../data/cv.js';
     {experience.map((job, i) => (
       <article class="timeline__item reveal" style={`--d:${i * 0.08}s`}>
         <div class="timeline__dot" aria-hidden="true"></div>
-        <div class="glass timeline__card">
-          <div class="timeline__head">
+        <details class="glass timeline__card" open={i === 0}>
+          <summary class="timeline__head">
             <div>
               <h3 class="timeline__role" data-i18n={`exp.${i}.role`}>{job.role}</h3>
               <p class="timeline__company">{job.company} · <span class="timeline__meta" data-i18n={`exp.${i}.meta`}>{job.meta}</span></p>
             </div>
-            <span class="timeline__period">{job.period}</span>
-          </div>
+            <div class="timeline__head-right">
+              <span class="timeline__period">{job.period}</span>
+              <span class="timeline__chevron" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M6 9l6 6 6-6" />
+                </svg>
+              </span>
+            </div>
+          </summary>
           <ul class="timeline__bullets">
             {job.bullets.map((b, bi) => (
               <li data-i18n={`exp.${i}.b${bi}`}>{b}</li>
             ))}
           </ul>
-        </div>
+        </details>
       </article>
     ))}
   </div>
@@ -69,8 +76,9 @@ import { experience } from '../data/cv.js';
   }
 
   .timeline__card {
-    padding: 1.6rem 1.8rem;
+    padding: 1.4rem 1.8rem;
     transition: transform 0.3s var(--ease), border-color 0.3s, background 0.3s;
+    overflow: hidden;
   }
 
   .timeline__card:hover {
@@ -80,12 +88,36 @@ import { experience } from '../data/cv.js';
   }
 
   .timeline__head {
+    list-style: none;
+    cursor: pointer;
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
     gap: 1rem;
-    margin-bottom: 1.1rem;
     flex-wrap: wrap;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .timeline__head::-webkit-details-marker {
+    display: none;
+  }
+
+  .timeline__head-right {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  .timeline__chevron {
+    display: grid;
+    place-items: center;
+    color: var(--faint);
+    transition: transform 0.3s var(--ease), color 0.25s;
+  }
+
+  .timeline__card[open] .timeline__chevron {
+    transform: rotate(180deg);
+    color: var(--accent-2);
   }
 
   .timeline__role {
@@ -121,6 +153,9 @@ import { experience } from '../data/cv.js';
     display: flex;
     flex-direction: column;
     gap: 0.55rem;
+    padding-top: 1.1rem;
+    margin-top: 1rem;
+    border-top: 1px dashed var(--glass-border);
   }
 
   .timeline__bullets li {
