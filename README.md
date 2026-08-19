@@ -56,3 +56,6 @@ Point the service at the repo. Build command `npm run build`, output `dist`. Imp
 - Rendering pauses when the hero is off-screen or the tab is hidden.
 - Latin-only font subsets, self-hosted variable fonts, `content-visibility` on sections.
 - `prefers-reduced-motion` disables all animation (including the WebGL scene).
+## Assets
+
+- `public/games/vivi-full.png`: Vivi (Black Mage) sprite from *Pictlogica Final Fantasy* (© Square Enix), ripped via The Spriters Resource. Fan art use on a personal portfolio; not for redistribution.
