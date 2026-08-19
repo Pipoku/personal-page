@@ -1,5 +1,6 @@
 export const siteConfig = {
   web3FormsKey: '',
+  booking: '',
 };
 
 export const profile = {
@@ -46,6 +47,11 @@ export const projects = [
     tech: ['Drupal', 'Moodle', 'REST APIs', 'Commerce'],
     metric: '1,100+ enrollments in its first month',
     featured: true,
+    case: {
+      problem: 'No unified enrollment path across platforms — manual, faculty-by-faculty processes and slow digital certification.',
+      solution: 'Architected Drupal Commerce + Moodle REST integration with a 5-step self-enrollment flow and automated digital certification.',
+      impact: '1,100+ enrollments in the first month and certificates issued automatically, cutting admin work and time-to-enroll.',
+    },
   },
   {
     name: 'Ingresantes UADER',
@@ -56,6 +62,11 @@ export const projects = [
     tech: ['Drupal', 'Paragraphs', 'Views'],
     metric: '4 faculties · 16 localities',
     featured: true,
+    case: {
+      problem: 'Future students had no single place to discover careers across 4 faculties and 16 localities or pre-enroll online.',
+      solution: 'Built a career finder with pre-inscription workflows, orientation tools and downloadable academic offers on Drupal.',
+      impact: 'A clear, guided first step for every applicant — less friction, fewer support tickets during inscription season.',
+    },
   },
   {
     name: 'Buenos Aires Ciudad',
@@ -66,6 +77,11 @@ export const projects = [
     tech: ['Drupal 8→10', 'Paragraphs'],
     metric: null,
     featured: false,
+    case: {
+      problem: 'Drupal 8 codebase with content sprawl, unstable upgrades and a migration to Drupal 10 ahead.',
+      solution: 'Led the Drupal 8 → 10 migration with content remodeling and Paragraphs, plus ongoing consulting support.',
+      impact: 'A stable, modern editorial platform for one of the largest city governments in the region.',
+    },
   },
   {
     name: 'Club San Jorge',
@@ -76,6 +92,11 @@ export const projects = [
     tech: ['PHP', 'Legacy → Modern'],
     metric: null,
     featured: false,
+    case: {
+      problem: 'Legacy codebase with little standardization — high maintenance cost and hard to extend safely.',
+      solution: 'Refactored the project applying modern patterns, cleaner structure and maintainable practices.',
+      impact: 'A codebase the client can extend with confidence and lower ongoing maintenance cost.',
+    },
   },
 ];
 
@@ -109,7 +130,7 @@ export const experience = [
     company: 'UADER — Rectorado',
     role: 'Drupal / Moodle Developer',
     period: '2021 — Present',
-    meta: 'Part-time · In-office',
+    meta: 'Part-time · Flexible/Hybrid',
     bullets: [
       'Directed end-to-end development of three mission-critical university web portals serving 57,000+ active users and 786,000+ events with high availability.',
       'Automated high-volume admin workflows with ECA and custom Drupal modules, reducing manual tasks by 80% and minimizing human error.',
@@ -131,11 +152,11 @@ export const skills = [
   },
   {
     group: 'Web Dev & Performance',
-    items: ['RESTful APIs', 'JSON:API', 'OAuth2', 'Web Optimization', 'Xdebug', 'Chrome DevTools'],
+    items: ['Web Optimization', 'JSON:API', 'RESTful APIs', 'OAuth2', 'Xdebug', 'Chrome DevTools'],
   },
   {
-    group: 'Databases & Tools',
-    items: ['MySQL', 'PostgreSQL', 'CI/CD', 'Pantheon', 'Composer', 'DDEV', 'Drush', 'Git', 'GitHub', 'GitLab', 'Bitbucket', 'Docker', 'Kubernetes', 'AWS', 'VPN', 'SSH'],
+    group: 'DevOps & Infrastructure',
+    items: ['CI/CD', 'Docker', 'Kubernetes', 'AWS', 'MySQL', 'PostgreSQL', 'Pantheon', 'Composer', 'DDEV', 'Drush', 'Git', 'GitHub', 'GitLab', 'Bitbucket', 'VPN', 'SSH'],
   },
   {
     group: 'Security & Methodologies',

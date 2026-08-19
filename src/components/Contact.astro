@@ -50,8 +50,15 @@ import { profile, siteConfig } from '../data/cv.js';
         <button type="button" id="copy-msg" class="btn btn--ghost contact__copy" hidden data-i18n="contact.copy">Copy message</button>
       </div>
       <p class="contact__hint" role="status" aria-live="polite" data-i18n="contact.hint">
-        Form opens your email client with the message pre-filled — nothing is stored anywhere.
+        Messages go straight to my inbox — no account or sign-up needed.
       </p>
+      {siteConfig.booking && (
+        <p class="contact__book">
+          <a href={siteConfig.booking} target="_blank" rel="noopener noreferrer" data-i18n="contact.book">
+            Prefer to book directly? Open my 15-minute call calendar.
+          </a>
+        </p>
+      )}
     </form>
   </div>
 </section>
@@ -163,6 +170,21 @@ import { profile, siteConfig } from '../data/cv.js';
   .contact__hint {
     font-size: 0.78rem;
     color: var(--faint);
+  }
+
+  .contact__book {
+    margin-top: 0.6rem;
+    font-size: 0.82rem;
+  }
+
+  .contact__book a {
+    color: var(--accent-2);
+    border-bottom: 1px solid color-mix(in srgb, var(--accent-2) 40%, transparent);
+    transition: border-color 0.25s;
+  }
+
+  .contact__book a:hover {
+    border-color: var(--accent-2);
   }
 
   @media (max-width: 860px) {

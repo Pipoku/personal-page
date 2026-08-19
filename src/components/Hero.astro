@@ -1,5 +1,5 @@
 ---
-import { profile, stats } from '../data/cv.js';
+import { profile, stats, siteConfig } from '../data/cv.js';
 ---
 
 <section id="top" class="hero">
@@ -7,16 +7,17 @@ import { profile, stats } from '../data/cv.js';
 
   <div class="hero__mascot" aria-hidden="true">
     <svg viewBox="0 0 120 150" width="100%" height="100%" fill="none">
-      <ellipse cx="60" cy="30" rx="46" ry="14" fill="#17141d" />
-      <path d="M60 2 L97 42 Q78 48 60 44 Q42 48 23 42 Z" fill="#17141d" />
-      <ellipse cx="60" cy="112" rx="34" ry="34" fill="#17141d" />
-      <path d="M26 106 Q60 88 94 106 L90 134 Q60 148 30 134 Z" fill="#1d1a26" />
-      <path d="M44 46 Q38 68 44 92" stroke="#3a3347" stroke-width="5" stroke-linecap="round" />
-      <path d="M76 46 Q82 68 76 92" stroke="#3a3347" stroke-width="5" stroke-linecap="round" />
-      <path d="M34 124 l14 10 M86 124 l-14 10" stroke="#15121b" stroke-width="6" stroke-linecap="round" />
-      <circle cx="26" cy="20" r="4" fill="#8fce4e" />
-      <ellipse class="hero__mascot-eye" cx="48" cy="100" rx="5.5" ry="7" fill="#ffd93d" />
-      <ellipse class="hero__mascot-eye" cx="72" cy="100" rx="5.5" ry="7" fill="#ffd93d" />
+      <path d="M18 44 C 16 6 46 -6 60 8 C 74 -6 104 6 102 44 Z" fill="#1b1932" />
+      <path d="M60 8 C 82 -4 104 4 112 26 C 114 32 108 34 104 28 C 96 12 78 2 60 12 Z" fill="#1b1932" />
+      <ellipse cx="60" cy="44" rx="52" ry="17" fill="#221f3d" />
+      <ellipse cx="60" cy="46" rx="50" ry="15" fill="#0d0c18" />
+      <path d="M32 46 C 26 74 28 106 36 126 Q 60 140 84 126 C 92 106 94 74 88 46 Z" fill="#18162c" />
+      <ellipse cx="46" cy="92" rx="10" ry="12" fill="#ffd93d" opacity="0.22" />
+      <ellipse cx="74" cy="92" rx="10" ry="12" fill="#ffd93d" opacity="0.22" />
+      <ellipse class="hero__mascot-eye" cx="46" cy="92" rx="6" ry="8" fill="#ffcf2e" />
+      <ellipse class="hero__mascot-eye" cx="74" cy="92" rx="6" ry="8" fill="#ffcf2e" />
+      <circle cx="44" cy="89" r="1.8" fill="#fff6c8" />
+      <circle cx="72" cy="89" r="1.8" fill="#fff6c8" />
     </svg>
   </div>
 
@@ -32,14 +33,22 @@ import { profile, stats } from '../data/cv.js';
   </div>
 
   <div class="hero__campfire" aria-hidden="true">
-    <svg viewBox="0 0 60 60" width="100%" height="100%" fill="none">
-      <path d="M8 46 L28 42 L52 46 L46 55 L12 55 Z" fill="#3a2b1a" />
-      <ellipse cx="30" cy="49" rx="17" ry="4" fill="#ffd93d" opacity="0.9" />
-      <path d="M30 46 C22 40 22 32 30 26 C38 32 38 40 30 46 Z" fill="#ff8a3d" />
-      <path d="M30 46 C25 42 25 36 30 31 C35 36 35 42 30 46 Z" fill="#ffd93d" />
+    <svg viewBox="0 0 80 64" width="100%" height="100%" fill="none">
+      <g class="hero__spark-p" aria-hidden="true">
+        <circle cx="50" cy="8" r="1.8" fill="#ffd93d" />
+        <circle cx="32" cy="12" r="1.5" fill="#ffa62b" />
+      </g>
+      <path d="M18 52 h 44" stroke="#7a5630" stroke-width="9" stroke-linecap="round" />
+      <path d="M22 49 L 60 43" stroke="#6b4a28" stroke-width="7" stroke-linecap="round" />
+      <path d="M58 49 L 22 43" stroke="#5c3f20" stroke-width="7" stroke-linecap="round" />
+      <ellipse cx="40" cy="52" rx="24" ry="5" fill="#2e1d0e" />
+      <path d="M40 46 C 16 36 22 14 40 4 C 58 14 64 36 40 46 Z" fill="#ff7a1a" />
+      <path d="M40 44 C 26 38 30 22 40 14 C 50 22 54 38 40 44 Z" fill="#ffd93d" />
+      <path d="M40 42 C 33 38 36 28 40 23 C 44 28 47 38 40 42 Z" fill="#fff3b0" />
       <g class="hero__marshmallow">
-        <line x1="30" y1="18" x2="30" y2="8" stroke="#8a6a45" stroke-width="3" stroke-linecap="round" />
-        <rect x="25" y="18" width="10" height="12" rx="3" fill="#f6efdd" />
+        <line x1="14" y1="50" x2="24" y2="22" stroke="#8a6a45" stroke-width="3.5" stroke-linecap="round" />
+        <rect x="20" y="12" width="11" height="14" rx="3.5" fill="#f6efdd" />
+        <path d="M20 14 Q 25.5 12 31 15 Q 30 20 25.5 21 Q 20 20 20 14 Z" fill="#e8c98f" opacity="0.9" />
       </g>
     </svg>
   </div>
@@ -58,11 +67,18 @@ import { profile, stats } from '../data/cv.js';
     <p class="hero__desc reveal" style="--d:.35s" data-i18n="hero.summary">{profile.summary}</p>
 
     <div class="hero__actions reveal" style="--d:.45s">
-      <a class="btn btn--primary" href="#contact" data-i18n="hero.letstalk">Let's talk</a>
+      <a
+        class="btn btn--primary"
+        href={siteConfig.booking || '#contact'}
+        target={siteConfig.booking ? '_blank' : undefined}
+        rel={siteConfig.booking ? 'noopener noreferrer' : undefined}
+        data-i18n="hero.letstalk"
+      >Let's talk</a>
       <a class="btn btn--ghost" href="/cv.pdf" data-i18n="hero.download" download>Download CV</a>
     </div>
 
     <div class="hero__socials reveal" style="--d:.55s">
+      <span class="hero__bilingual" data-i18n="hero.bilingual">Bilingual · EN / ES</span>
       <span class="hero__open"><span class="hero__open-dot" aria-hidden="true"></span><span data-i18n="hero.open">Open to work</span></span>
       <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">LinkedIn</a>
       <a href={profile.email} aria-label="Email">Email</a>
@@ -196,6 +212,17 @@ import { profile, stats } from '../data/cv.js';
     color: #7cf7b8;
     background: rgba(124, 247, 184, 0.08);
     border: 1px solid rgba(124, 247, 184, 0.25);
+  }
+
+  .hero__bilingual {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.4rem 0.9rem;
+    border-radius: 999px;
+    font-size: 0.78rem;
+    color: var(--accent-2);
+    background: color-mix(in srgb, var(--accent-2) 10%, transparent);
+    border: 1px solid color-mix(in srgb, var(--accent-2) 30%, transparent);
   }
 
   .hero__open-dot {
@@ -415,7 +442,7 @@ import { profile, stats } from '../data/cv.js';
     position: absolute;
     right: clamp(1rem, 11vw, 9rem);
     bottom: 15vh;
-    width: clamp(46px, 5vw, 60px);
+    width: clamp(52px, 6vw, 70px);
     aspect-ratio: 1;
     z-index: 1;
   }
@@ -427,12 +454,27 @@ import { profile, stats } from '../data/cv.js';
   .hero__marshmallow {
     animation: roast 5s ease-in-out infinite;
     transform-box: fill-box;
-    transform-origin: 50% 20%;
+    transform-origin: 50% 80%;
+  }
+
+  .hero__spark-p circle {
+    animation: spark-rise 2.6s ease-out infinite;
+    transform-box: fill-box;
+  }
+
+  .hero__spark-p circle:nth-child(2) {
+    animation-delay: 1.3s;
   }
 
   @keyframes roast {
-    0%, 100% { transform: rotate(-7deg); }
-    50% { transform: rotate(7deg); }
+    0%, 100% { transform: rotate(-6deg); }
+    50% { transform: rotate(6deg); }
+  }
+
+  @keyframes spark-rise {
+    0% { transform: translateY(0); opacity: 0; }
+    25% { opacity: 1; }
+    100% { transform: translateY(-22px); opacity: 0; }
   }
 
   @media (max-width: 720px), (max-height: 720px) {

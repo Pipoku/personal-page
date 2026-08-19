@@ -78,7 +78,7 @@ export const translations = {
     'exp.1.b4':
       'Mentored team members, keeping code quality high across the whole development lifecycle.',
     'exp.2.role': 'Drupal / Moodle Developer',
-    'exp.2.meta': 'Part-time · In-office',
+    'exp.2.meta': 'Part-time · Flexible/Hybrid',
     'exp.2.b0':
       'Directed end-to-end development of three mission-critical university web portals serving 57,000+ active users and 786,000+ events with high availability.',
     'exp.2.b1':
@@ -96,7 +96,7 @@ export const translations = {
     'workflow.sub': 'AI-augmented, but human-owned.',
     'workflow.card1.title': 'Secure local AI',
     'workflow.card1.desc':
-      'Run LLMs locally (Ollama) so client and government code never leaves a secure environment.',
+      'Run open-source models locally (Llama 3 / OpenCode via Ollama) so client and government code never leaves a secure environment.',
     'workflow.card2.title': 'AI-accelerated delivery',
     'workflow.card2.desc':
       'Cursor and coding agents draft scaffolding, migrations and tests — cutting delivery cycles without cutting quality.',
@@ -113,6 +113,34 @@ export const translations = {
     'work.kicker': '// selected work',
     'work.title': 'Live projects',
     'work.visit': 'Visit site',
+    'work.case': 'Case study',
+    'case.problem': 'Problem',
+    'case.solution': 'Solution',
+    'case.impact': 'Impact',
+    'case.0.problem':
+      'No unified enrollment path across platforms — manual, faculty-by-faculty processes and slow digital certification.',
+    'case.0.solution':
+      'Architected Drupal Commerce + Moodle REST integration with a 5-step self-enrollment flow and automated digital certification.',
+    'case.0.impact':
+      '1,100+ enrollments in the first month and certificates issued automatically, cutting admin work and time-to-enroll.',
+    'case.1.problem':
+      'Future students had no single place to discover careers across 4 faculties and 16 localities or pre-enroll online.',
+    'case.1.solution':
+      'Built a career finder with pre-inscription workflows, orientation tools and downloadable academic offers on Drupal.',
+    'case.1.impact':
+      'A clear, guided first step for every applicant — less friction, fewer support tickets during inscription season.',
+    'case.2.problem':
+      'Drupal 8 codebase with content sprawl, unstable upgrades and a migration to Drupal 10 ahead.',
+    'case.2.solution':
+      'Led the Drupal 8 → 10 migration with content remodeling and Paragraphs, plus ongoing consulting support.',
+    'case.2.impact':
+      'A stable, modern editorial platform for one of the largest city governments in the region.',
+    'case.3.problem':
+      'Legacy codebase with little standardization — high maintenance cost and hard to extend safely.',
+    'case.3.solution':
+      'Refactored the project applying modern patterns, cleaner structure and maintainable practices.',
+    'case.3.impact':
+      'A codebase the client can extend with confidence and lower ongoing maintenance cost.',
     'work.role.full': 'Built it all',
     'work.role.consultant': 'Drupal consultant',
     'work.role.modernization': 'Modernization',
@@ -139,7 +167,7 @@ export const translations = {
     'skills.g0': 'Languages & Frameworks',
     'skills.g1': 'CMS & Ecosystem',
     'skills.g2': 'Web Dev & Performance',
-    'skills.g3': 'Databases & Tools',
+    'skills.g3': 'DevOps & Infrastructure',
     'skills.g4': 'Security & Methodologies',
     'certs.kicker': '// certifications',
     'certs.title': 'Proof of the grind',
@@ -173,8 +201,10 @@ export const translations = {
     'contact.copyFail': 'Could not copy automatically. Select the text and copy manually.',
     'contact.hint':
       'Messages go straight to my inbox — no account or sign-up needed.',
+    'contact.book': 'Prefer to book directly? Open my 15-minute call calendar.',
     'contact.opening':
       'Opening your email client... if nothing happened, email me directly at ',
+    'hero.bilingual': 'Bilingual · EN / ES',
     'footer.tag': 'Crafted with Astro, custom WebGL & a lot of ',
     'footer.word': 'coffee.',
   },
@@ -255,7 +285,7 @@ export const translations = {
     'exp.1.b4':
       'Mentoreé a integrantes del equipo, manteniendo la calidad de código en todo el ciclo de desarrollo.',
     'exp.2.role': 'Desarrollador Drupal / Moodle',
-    'exp.2.meta': 'Part-time · Presencial',
+    'exp.2.meta': 'Part-time · Flexible/Híbrido',
     'exp.2.b0':
       'Dirigí el desarrollo integral de tres portales web universitarios críticos con 57,000+ usuarios activos y 786,000+ eventos procesados, con alta disponibilidad.',
     'exp.2.b1':
@@ -273,7 +303,7 @@ export const translations = {
     'workflow.sub': 'Potenciado con IA, pero con propiedad humana.',
     'workflow.card1.title': 'IA local segura',
     'workflow.card1.desc':
-      'Ejecuto LLMs locales (Ollama) para que el código de clientes y gobiernos nunca salga de un entorno seguro.',
+      'Ejecuto modelos de código abierto (Llama 3 / OpenCode) de forma local con Ollama para que el código de clientes y gobiernos nunca salga de un entorno seguro.',
     'workflow.card2.title': 'Entrega acelerada con IA',
     'workflow.card2.desc':
       'Cursor y agentes de código redactan scaffolding, migraciones y tests — acortando ciclos de entrega sin sacrificar calidad.',
@@ -290,6 +320,34 @@ export const translations = {
     'work.kicker': '// trabajo seleccionado',
     'work.title': 'Proyectos en vivo',
     'work.visit': 'Ver sitio',
+    'work.case': 'Caso de estudio',
+    'case.problem': 'Problema',
+    'case.solution': 'Solución',
+    'case.impact': 'Impacto',
+    'case.0.problem':
+      'Sin un camino de inscripción unificado entre plataformas — procesos manuales facultad por facultad y certificación digital lenta.',
+    'case.0.solution':
+      'Diseñé una integración Drupal Commerce + Moodle REST con auto-inscripción en 5 pasos y certificación digital automatizada.',
+    'case.0.impact':
+      '1,100+ inscripciones en el primer mes y certificados emitidos automáticamente, reduciendo trabajo administrativo y tiempo de inscripción.',
+    'case.1.problem':
+      'Los aspirantes no tenían un lugar único para descubrir carreras en 4 facultades y 16 localidades, ni para pre-inscribirse en línea.',
+    'case.1.solution':
+      'Construí un buscador de carreras con flujos de pre-inscripción, herramientas de orientación y oferta académica descargable en Drupal.',
+    'case.1.impact':
+      'Un primer paso claro y guiado para cada postulante — menos fricción y menos tickets de soporte en temporada de inscripciones.',
+    'case.2.problem':
+      'Código Drupal 8 con contenido disperso, upgrades inestables y una migración a Drupal 10 por delante.',
+    'case.2.solution':
+      'Lideré la migración Drupal 8 → 10 con remodelación de contenido y Paragraphs, más soporte de consultoría continuo.',
+    'case.2.impact':
+      'Una plataforma editorial estable y moderna para uno de los gobiernos urbanos más grandes de la región.',
+    'case.3.problem':
+      'Código legado con poca estandarización — alto costo de mantenimiento y difícil de extender de forma segura.',
+    'case.3.solution':
+      'Refactoricé el proyecto aplicando patrones modernos, estructura más limpia y prácticas mantenibles.',
+    'case.3.impact':
+      'Un código que el cliente puede extender con confianza y menor costo de mantenimiento.',
     'work.role.full': 'Lo construí todo',
     'work.role.consultant': 'Consultor Drupal',
     'work.role.modernization': 'Modernización',
@@ -316,7 +374,7 @@ export const translations = {
     'skills.g0': 'Lenguajes y Frameworks',
     'skills.g1': 'CMS y Ecosistema',
     'skills.g2': 'Desarrollo Web y Performance',
-    'skills.g3': 'Bases de Datos y Herramientas',
+    'skills.g3': 'DevOps e Infraestructura',
     'skills.g4': 'Seguridad y Metodologías',
     'certs.kicker': '// certificaciones',
     'certs.title': 'Prueba del trabajo constante',
@@ -350,8 +408,10 @@ export const translations = {
     'contact.copyFail': 'No se pudo copiar automáticamente. Seleccioná el texto y copialo manualmente.',
     'contact.hint':
       'Los mensajes llegan directo a mi bandeja de entrada — sin cuenta ni registro.',
+    'contact.book': '¿Preferís agendar directo? Abrí mi calendario de charla de 15 minutos.',
     'contact.opening':
       'Abriendo tu cliente de correo... si no pasa nada, escribime directamente a ',
+    'hero.bilingual': 'Bilingüe · EN / ES',
     'footer.tag': 'Hecho con Astro, WebGL personalizado y mucho ',
     'footer.word': 'café.',
   },
