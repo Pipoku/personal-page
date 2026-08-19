@@ -376,11 +376,6 @@ html.low-power .nav.scrolled {
   -webkit-backdrop-filter: none;
 }
 
-html.low-power .hero__mascot,
-html.low-power .hero__spark {
-  display: none;
-}
-
 /* ---------- Reduced motion ---------- */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
@@ -391,7 +386,9 @@ html.low-power .hero__spark {
     transition: none;
   }
   .hero__mascot,
-  .hero__spark {
+  .hero__spark,
+  .hero__ow,
+  .hero__campfire {
     animation: none;
   }
 }
