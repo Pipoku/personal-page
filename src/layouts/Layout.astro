@@ -79,6 +79,13 @@ const schema = {
     <meta name="generator" content={Astro.generator} />
     <meta name="theme-color" content="#05060f" />
     <meta name="color-scheme" content="dark" />
+    <script is:inline>
+      try {
+        if (localStorage.getItem('rc-theme') === 'fun') document.documentElement.dataset.theme = 'fun';
+        const low = (navigator.hardwareConcurrency || 8) <= 4 || (navigator.deviceMemory || 8) <= 4;
+        if (low) document.documentElement.classList.add('low-power');
+      } catch (e) {}
+    </script>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="canonical" href={siteUrl} />
 

@@ -9,6 +9,8 @@
   --accent-1: #7c6cff;
   --accent-2: #22d3ee;
   --accent-3: #e879f9;
+  --accent-1-solid: #7c6cff;
+  --accent-grad-solid: linear-gradient(120deg, #7c6cff, #a832d8);
 
   --glass: rgba(255, 255, 255, 0.05);
   --glass-strong: rgba(255, 255, 255, 0.08);
@@ -23,6 +25,29 @@
 
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
   --container: 1080px;
+}
+
+/* ---------- Fun theme (cozy farming / video game) ---------- */
+:root[data-theme='fun'] {
+  --bg: #0b1713;
+  --bg-elevated: #11211a;
+  --text: #f6efdd;
+  --muted: #c3cfa9;
+  --faint: #a4b28b;
+
+  --accent-1: #ffa62b;
+  --accent-2: #ffd93d;
+  --accent-3: #8fce4e;
+  --accent-1-solid: #a0500f;
+  --accent-grad-solid: linear-gradient(120deg, #b3541e, #3f7d1e);
+
+  --glass: rgba(255, 244, 214, 0.06);
+  --glass-strong: rgba(255, 244, 214, 0.09);
+  --glass-border: rgba(255, 244, 214, 0.14);
+  --glass-hover: rgba(255, 244, 214, 0.1);
+
+  --radius: 1.6rem;
+  --radius-sm: 0.9rem;
 }
 
 /* ---------- Reset ---------- */
@@ -91,7 +116,7 @@ button {
   z-index: 100;
   padding: 0.6rem 1.1rem;
   border-radius: 0.5rem;
-  background: var(--accent-1);
+  background: var(--accent-1-solid);
   color: #fff;
   font-weight: 600;
   font-size: 0.9rem;
@@ -170,8 +195,8 @@ button {
 .aurora__blob {
   position: absolute;
   border-radius: 50%;
-  filter: blur(75px);
-  opacity: 0.42;
+  filter: blur(60px);
+  opacity: 0.26;
   will-change: transform;
   mix-blend-mode: screen;
 }
@@ -211,6 +236,11 @@ button {
     linear-gradient(90deg, rgba(255, 255, 255, 0.028) 1px, transparent 1px);
   background-size: 48px 48px;
   mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 30%, transparent 80%);
+}
+
+:root[data-theme='fun'] .aurora__blob {
+  filter: blur(55px);
+  opacity: 0.22;
 }
 
 @keyframes drift-1 {
@@ -265,8 +295,8 @@ section {
   background: var(--glass);
   border: 1px solid var(--glass-border);
   border-radius: var(--radius);
-  backdrop-filter: blur(18px) saturate(140%);
-  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
 }
 
 /* ---------- Buttons ---------- */
@@ -283,9 +313,9 @@ section {
 }
 
 .btn--primary {
-  background: linear-gradient(120deg, var(--accent-1), #a832d8);
+  background: var(--accent-grad-solid);
   color: #fff;
-  box-shadow: 0 8px 28px -8px color-mix(in srgb, var(--accent-1) 70%, transparent);
+  box-shadow: 0 8px 28px -8px color-mix(in srgb, var(--accent-1) 40%, transparent);
 }
 
 .btn--primary:hover {
@@ -329,6 +359,28 @@ html.bw .aurora__blob {
   opacity: 0.35;
 }
 
+/* ---------- Low-power mode (weak machines) ---------- */
+html.low-power .aurora__blob {
+  animation: none;
+  opacity: 0.14;
+}
+
+html.low-power .noise {
+  display: none;
+}
+
+html.low-power .glass,
+html.low-power .back-to-top,
+html.low-power .nav.scrolled {
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+html.low-power .hero__mascot,
+html.low-power .hero__spark {
+  display: none;
+}
+
 /* ---------- Reduced motion ---------- */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
@@ -337,5 +389,9 @@ html.bw .aurora__blob {
     opacity: 1;
     transform: none;
     transition: none;
+  }
+  .hero__mascot,
+  .hero__spark {
+    animation: none;
   }
 }

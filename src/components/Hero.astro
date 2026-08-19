@@ -5,6 +5,24 @@ import { profile, stats } from '../data/cv.js';
 <section id="top" class="hero">
   <canvas id="hero-canvas" class="hero__canvas" aria-hidden="true"></canvas>
 
+  <div class="hero__mascot" aria-hidden="true">
+    <svg viewBox="0 0 120 150" width="100%" height="100%" fill="none">
+      <ellipse cx="60" cy="30" rx="46" ry="14" fill="#17141d" />
+      <path d="M60 2 L97 42 Q78 48 60 44 Q42 48 23 42 Z" fill="#17141d" />
+      <ellipse cx="60" cy="112" rx="34" ry="34" fill="#17141d" />
+      <path d="M26 106 Q60 88 94 106 L90 134 Q60 148 30 134 Z" fill="#1d1a26" />
+      <path d="M44 46 Q38 68 44 92" stroke="#3a3347" stroke-width="5" stroke-linecap="round" />
+      <path d="M76 46 Q82 68 76 92" stroke="#3a3347" stroke-width="5" stroke-linecap="round" />
+      <path d="M34 124 l14 10 M86 124 l-14 10" stroke="#15121b" stroke-width="6" stroke-linecap="round" />
+      <circle cx="26" cy="20" r="4" fill="#8fce4e" />
+      <ellipse class="hero__mascot-eye" cx="48" cy="100" rx="5.5" ry="7" fill="#ffd93d" />
+      <ellipse class="hero__mascot-eye" cx="72" cy="100" rx="5.5" ry="7" fill="#ffd93d" />
+    </svg>
+  </div>
+
+  <span class="hero__spark hero__spark--1" aria-hidden="true"></span>
+  <span class="hero__spark hero__spark--2" aria-hidden="true"></span>
+
   <div class="container hero__inner">
     <p class="hero__hello reveal" style="--d:.05s" data-i18n="hero.hello">Hi, I'm</p>
     <h1 class="hero__name reveal" style="--d:.15s">
@@ -231,6 +249,77 @@ import { profile, stats } from '../data/cv.js';
 
   .hero__scroll:hover {
     color: var(--accent-2);
+  }
+
+  /* Vivi-inspired black mage (fun theme only) */
+  .hero__mascot {
+    display: none;
+    position: absolute;
+    right: clamp(1rem, 6vw, 5rem);
+    bottom: 34vh;
+    width: clamp(88px, 9vw, 116px);
+    z-index: 1;
+    animation: mascot-bob 3.4s ease-in-out infinite;
+    transform-origin: bottom center;
+  }
+
+  html[data-theme='fun'] .hero__mascot {
+    display: block;
+  }
+
+  .hero__mascot-eye {
+    animation: mascot-blink 6s infinite;
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+
+  @keyframes mascot-bob {
+    0%, 100% { transform: translateY(0) rotate(-1.5deg); }
+    50% { transform: translateY(-10px) rotate(1.5deg); }
+  }
+
+  @keyframes mascot-blink {
+    0%, 90%, 100% { transform: scaleY(1); }
+    93%, 96% { transform: scaleY(0.08); }
+  }
+
+  .hero__spark {
+    display: none;
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #ffe9a8 0%, #ffd93d 45%, transparent 75%);
+    z-index: 1;
+    opacity: 0.75;
+  }
+
+  html[data-theme='fun'] .hero__spark {
+    display: block;
+  }
+
+  .hero__spark--1 {
+    right: 22vw;
+    bottom: 62vh;
+    animation: spark-float 5s ease-in-out infinite;
+  }
+
+  .hero__spark--2 {
+    right: 16vw;
+    bottom: 45vh;
+    animation: spark-float 6.5s ease-in-out 1.2s infinite;
+  }
+
+  @keyframes spark-float {
+    0%, 100% { transform: translateY(0); opacity: 0.3; }
+    50% { transform: translateY(-14px); opacity: 0.85; }
+  }
+
+  @media (max-width: 720px) {
+    .hero__mascot,
+    .hero__spark {
+      display: none !important;
+    }
   }
 
   @keyframes bob {

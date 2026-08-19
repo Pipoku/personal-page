@@ -23,6 +23,17 @@ const links = [
       <div class="nav__controls" role="group" aria-label="Language and appearance">
         <button data-lang-btn="en" class="nav__lang" aria-pressed="false" aria-label="Switch to English">EN</button>
         <button data-lang-btn="es" class="nav__lang" aria-pressed="false" aria-label="Cambiar a español">ES</button>
+        <button id="theme-toggle" class="nav__theme" aria-pressed="false" data-i18n="nav.theme" data-i18n-attr="aria-label" title="Fun mode">
+          <svg class="icon-fun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M6 12h4M8 10v4M15 12h.01M18 10h.01" />
+            <path d="M17.32 5H6.68A4.68 4.68 0 0 0 2 9.68c0 2.1 1.05 4.04 2.8 5.22l.7.5a1 1 0 0 1 .26 1.35l-.92 1.42a1.5 1.5 0 0 0 2.2 1.95l2.06-1.83a1.5 1.5 0 0 1 1.98 0l2.06 1.83a1.5 1.5 0 0 0 2.2-1.95l-.92-1.42a1 1 0 0 1 .26-1.35l.7-.5A5.68 5.68 0 0 0 22 9.68 4.68 4.68 0 0 0 17.32 5Z" />
+          </svg>
+          <svg class="icon-pro" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="2" y="7" width="20" height="14" rx="2" />
+            <path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+            <path d="M2 13h20" />
+          </svg>
+        </button>
         <button id="bw-toggle" class="nav__bw" aria-pressed="false" aria-label="Toggle black and white mode" title="Black & white">◐</button>
       </div>
       <a class="nav__cta" href="/cv.pdf" data-i18n="nav.download" download>Download CV</a>
@@ -40,6 +51,17 @@ const links = [
     <div class="nav__controls nav__controls--mobile" role="group" aria-label="Language and appearance">
       <button data-lang-btn="en" class="nav__lang" aria-pressed="false" aria-label="Switch to English">EN</button>
       <button data-lang-btn="es" class="nav__lang" aria-pressed="false" aria-label="Cambiar a español">ES</button>
+      <button id="theme-toggle-mobile" class="nav__theme" aria-pressed="false" data-i18n="nav.theme" data-i18n-attr="aria-label" title="Fun mode">
+        <svg class="icon-fun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M6 12h4M8 10v4M15 12h.01M18 10h.01" />
+          <path d="M17.32 5H6.68A4.68 4.68 0 0 0 2 9.68c0 2.1 1.05 4.04 2.8 5.22l.7.5a1 1 0 0 1 .26 1.35l-.92 1.42a1.5 1.5 0 0 0 2.2 1.95l2.06-1.83a1.5 1.5 0 0 1 1.98 0l2.06 1.83a1.5 1.5 0 0 0 2.2-1.95l-.92-1.42a1 1 0 0 1 .26-1.35l.7-.5A5.68 5.68 0 0 0 22 9.68 4.68 4.68 0 0 0 17.32 5Z" />
+        </svg>
+        <svg class="icon-pro" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="2" y="7" width="20" height="14" rx="2" />
+          <path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+          <path d="M2 13h20" />
+        </svg>
+      </button>
       <button id="bw-toggle-mobile" class="nav__bw" aria-pressed="false" aria-label="Toggle black and white mode">◐</button>
     </div>
     <a class="nav__cta" href="/cv.pdf" data-i18n="nav.download" download>Download CV</a>
@@ -86,7 +108,7 @@ const links = [
     border-radius: 0.65rem;
     font-family: var(--font-mono);
     font-size: 0.8rem;
-    background: linear-gradient(120deg, var(--accent-1), var(--accent-3));
+    background: var(--accent-grad-solid);
     color: #fff;
   }
 
@@ -119,7 +141,8 @@ const links = [
   }
 
   .nav__lang,
-  .nav__bw {
+  .nav__bw,
+  .nav__theme {
     font-family: var(--font-mono);
     font-size: 0.72rem;
     font-weight: 600;
@@ -129,6 +152,32 @@ const links = [
     transition: color 0.25s, background 0.25s;
   }
 
+  .nav__theme {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .nav__theme svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .nav__theme .icon-fun {
+    display: none;
+  }
+
+  .nav__theme .icon-pro {
+    display: block;
+  }
+
+  html[data-theme='fun'] .nav__theme .icon-fun {
+    display: block;
+  }
+
+  html[data-theme='fun'] .nav__theme .icon-pro {
+    display: none;
+  }
+
   .nav__bw {
     font-size: 0.9rem;
     line-height: 1;
@@ -136,16 +185,18 @@ const links = [
   }
 
   .nav__lang:hover,
-  .nav__bw:hover {
+  .nav__bw:hover,
+  .nav__theme:hover {
     color: var(--text);
   }
 
   .nav__lang.active {
     color: #fff;
-    background: linear-gradient(120deg, var(--accent-1), var(--accent-3));
+    background: var(--accent-grad-solid);
   }
 
-  .nav__bw.active {
+  .nav__bw.active,
+  .nav__theme.active {
     color: var(--text);
     background: var(--glass-hover);
   }
@@ -310,5 +361,25 @@ const links = [
   bwBtns.forEach((b) => b.addEventListener('click', () => setBw(!isBw())));
   window.addEventListener('storage', (e) => {
     if (e.key === BW_KEY) setBw(e.newValue === '1');
+  });
+
+  const THEME_KEY = 'rc-theme';
+  const themeBtns = document.querySelectorAll('.nav__theme');
+  function isFun() {
+    return document.documentElement.dataset.theme === 'fun';
+  }
+  function setTheme(fun) {
+    localStorage.setItem(THEME_KEY, fun ? 'fun' : 'pro');
+    if (fun) document.documentElement.dataset.theme = 'fun';
+    else delete document.documentElement.dataset.theme;
+    themeBtns.forEach((b) => {
+      b.classList.toggle('active', fun);
+      b.setAttribute('aria-pressed', String(fun));
+    });
+  }
+  setTheme(localStorage.getItem(THEME_KEY) === 'fun');
+  themeBtns.forEach((b) => b.addEventListener('click', () => setTheme(!isFun())));
+  window.addEventListener('storage', (e) => {
+    if (e.key === THEME_KEY) setTheme(e.newValue === 'fun');
   });
 </script>

@@ -138,8 +138,12 @@ export function initHeroCanvas(id) {
   let ctxLost = false;
 
   const isMobile = window.matchMedia('(max-width: 720px)').matches;
-  const count = isMobile ? 110 : 200;
-  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+  const lowPower =
+    (navigator.hardwareConcurrency || 8) <= 4 || (navigator.deviceMemory || 8) <= 4;
+  const count = lowPower ? (isMobile ? 45 : 80) : isMobile ? 110 : 200;
+  const dpr = Math.min(window.devicePixelRatio || 1, lowPower ? 1.25 : 1.75);
+  const speed = lowPower ? 0.5 : 1;
+  const lineEvery = lowPower ? 14 : 8;
   const container = canvas.parentElement;
 
   const pointProgram = program(gl, VERT_SRC + '\n' + VS_POINTS, FS_POINTS);
@@ -250,8 +254,8 @@ export function initHeroCanvas(id) {
     rafId = requestAnimationFrame(tick);
     t += 0.002;
     frame++;
-    rotationY += 0.0012;
-    rotationX += 0.0004;
+    rotationY += 0.0012 * speed;
+    rotationX += 0.0004 * speed;
 
     mouse.x += (mouse.tx - mouse.x) * 0.04;
     mouse.y += (mouse.ty - mouse.y) * 0.04;
@@ -274,7 +278,7 @@ export function initHeroCanvas(id) {
 
     gl.clear(gl.COLOR_BUFFER_BIT);
 
-    if (frame % 8 === 0) buildLines();
+    if (frame % lineEvery === 0) buildLines();
     gl.useProgram(lineProgram);
     gl.uniformMatrix4fv(uLineMV, false, mvp);
     gl.bindBuffer(gl.ARRAY_BUFFER, buffers.lb);
