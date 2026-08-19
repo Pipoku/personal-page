@@ -18,7 +18,7 @@ const year = new Date().getFullYear();
       <a href={profile.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
       <a href={profile.github} target="_blank" rel="noopener noreferrer">GitHub</a>
       <a href={profile.email}>Email</a>
-      <a href="/cv.pdf" download>CV</a>
+      <a href={import.meta.env.BASE_URL + 'cv.pdf'} download>CV</a>
     </div>
   </div>
 </footer>

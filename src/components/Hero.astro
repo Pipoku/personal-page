@@ -6,7 +6,7 @@ import { profile, stats, siteConfig } from '../data/cv.js';
   <canvas id="hero-canvas" class="hero__canvas" aria-hidden="true"></canvas>
 
   <div class="hero__mascot" aria-hidden="true">
-    <img src="/games/vivi.png" alt="" width="330" height="438" class="hero__mage" loading="lazy" decoding="async" />
+    <img src={import.meta.env.BASE_URL + 'games/vivi.png'} alt="" width="330" height="438" class="hero__mage" loading="lazy" decoding="async" />
   </div>
 
   <span class="hero__spark hero__spark--1" aria-hidden="true"></span>
@@ -62,7 +62,7 @@ import { profile, stats, siteConfig } from '../data/cv.js';
         rel={siteConfig.booking ? 'noopener noreferrer' : undefined}
         data-i18n="hero.letstalk"
       >Let's talk</a>
-      <a class="btn btn--ghost" href="/cv.pdf" data-i18n="hero.download" download>Download CV</a>
+      <a class="btn btn--ghost" href={import.meta.env.BASE_URL + 'cv.pdf'} data-i18n="hero.download" download>Download CV</a>
     </div>
 
     <div class="hero__socials reveal" style="--d:.55s">

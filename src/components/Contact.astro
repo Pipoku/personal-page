@@ -25,7 +25,7 @@ import { profile, siteConfig } from '../data/cv.js';
           <span class="contact__link-value">{profile.phone}</span>
         </a>
       </div>
-      <a class="btn btn--ghost" href="/cv.pdf" data-i18n="nav.download" download>Download CV</a>
+      <a class="btn btn--ghost" href={import.meta.env.BASE_URL + 'cv.pdf'} data-i18n="nav.download" download>Download CV</a>
     </div>
 
     <form id="contact-form" class="contact__form" data-email={profile.email} data-form-key={siteConfig.web3FormsKey}>
