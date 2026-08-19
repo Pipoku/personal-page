@@ -58,4 +58,4 @@ Point the service at the repo. Build command `npm run build`, output `dist`. Imp
 - `prefers-reduced-motion` disables all animation (including the WebGL scene).
 ## Assets
 
-- `public/games/vivi-full.png`: Vivi (Black Mage) sprite from *Pictlogica Final Fantasy* (© Square Enix), ripped via The Spriters Resource. Fan art use on a personal portfolio; not for redistribution.
+- `public/games/mage-idle.png`: 4-frame idle animation of a black mage pixel character, from *Mage Sprites (Idle and Walking)* by an OpenGameArt contributor, released under **CC0** (public domain). No attribution required.
