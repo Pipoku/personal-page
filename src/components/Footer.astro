@@ -11,6 +11,9 @@ const year = new Date().getFullYear();
     <p class="footer__tag">
       <span data-i18n="footer.tag">Crafted with Astro, Three.js & a lot of </span><span class="footer__heart" data-i18n="footer.word">coffee.</span>
     </p>
+    <p class="footer__credit">
+      Mascot art: <a href="https://lpc.opengameart.org/content/vivi-warrior-vector" target="_blank" rel="noopener noreferrer" class="footer__credit-link">Vivi Warrior Vector</a> (LPC, OpenGameArt) — CC-BY-SA 3.0, recolored.
+    </p>
     <div class="footer__links">
       <a href={profile.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
       <a href={profile.github} target="_blank" rel="noopener noreferrer">GitHub</a>
@@ -52,6 +55,23 @@ const year = new Date().getFullYear();
     background-clip: text;
     -webkit-text-fill-color: transparent;
     font-weight: 600;
+  }
+
+  .footer__credit {
+    width: 100%;
+    margin-top: 0.9rem;
+    font-size: 0.72rem;
+    color: var(--faint);
+  }
+
+  .footer__credit-link {
+    color: var(--muted);
+    border-bottom: 1px solid var(--glass-border);
+    transition: color 0.25s;
+  }
+
+  .footer__credit-link:hover {
+    color: var(--accent-2);
   }
 
   .footer__links {

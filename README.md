@@ -58,4 +58,4 @@ Point the service at the repo. Build command `npm run build`, output `dist`. Imp
 - `prefers-reduced-motion` disables all animation (including the WebGL scene).
 ## Assets
 
-- `public/games/mage-idle.png`: 4-frame idle animation of a black mage pixel character, from *Mage Sprites (Idle and Walking)* by an OpenGameArt contributor, released under **CC0** (public domain). No attribution required.
+- `public/games/vivi.png`: hero mascot in fun theme — fan-art black mage (Vivi-style) from *Vivi Warrior Vector* (Liberated Pixel Cup, OpenGameArt, 2012), **CC-BY-SA 3.0**. Recolored to the classic black-mage palette (charcoal robe, glowing yellow eyes). Credit line in page footer; original: https://lpc.opengameart.org/content/vivi-warrior-vector
