@@ -4,7 +4,7 @@
   --bg-elevated: #0b0d1c;
   --text: #e8ebfa;
   --muted: #9aa3c4;
-  --faint: #5c6484;
+  --faint: #8a94b8;
 
   --accent-1: #7c6cff;
   --accent-2: #22d3ee;
@@ -78,13 +78,38 @@ button {
   border-radius: 4px;
 }
 
+::placeholder {
+  color: var(--faint);
+  opacity: 1;
+}
+
+/* ---------- Skip link ---------- */
+.skip-link {
+  position: fixed;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 100;
+  padding: 0.6rem 1.1rem;
+  border-radius: 0.5rem;
+  background: var(--accent-1);
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transform: translateY(-300%);
+  transition: transform 0.2s var(--ease);
+}
+
+.skip-link:focus-visible {
+  transform: none;
+}
+
 /* ---------- Film grain overlay ---------- */
 .noise {
   position: fixed;
   inset: 0;
   z-index: -1;
   pointer-events: none;
-  opacity: 0.05;
+  opacity: 0.03;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
@@ -145,8 +170,8 @@ button {
 .aurora__blob {
   position: absolute;
   border-radius: 50%;
-  filter: blur(90px);
-  opacity: 0.55;
+  filter: blur(75px);
+  opacity: 0.42;
   will-change: transform;
   mix-blend-mode: screen;
 }
@@ -182,8 +207,8 @@ button {
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+    linear-gradient(rgba(255, 255, 255, 0.028) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.028) 1px, transparent 1px);
   background-size: 48px 48px;
   mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 30%, transparent 80%);
 }
@@ -258,7 +283,7 @@ section {
 }
 
 .btn--primary {
-  background: linear-gradient(120deg, var(--accent-1), var(--accent-3));
+  background: linear-gradient(120deg, var(--accent-1), #a832d8);
   color: #fff;
   box-shadow: 0 8px 28px -8px color-mix(in srgb, var(--accent-1) 70%, transparent);
 }

@@ -165,11 +165,16 @@ export const translations = {
     'contact.form.subjectPh': "What's this about?",
     'contact.form.messagePh': 'Tell me about your project...',
     'contact.submit': 'Send message',
+    'contact.copy': 'Copy message',
+    'contact.sending': 'Sending...',
+    'contact.success': 'Message sent — I reply soon. Thanks for reaching out!',
+    'contact.copied': 'Message copied to clipboard.',
+    'contact.copyFail': 'Could not copy automatically. Select the text and copy manually.',
     'contact.hint':
-      'Form opens your email client with the message pre-filled — nothing is stored anywhere.',
+      'Messages go straight to my inbox — no account or sign-up needed.',
     'contact.opening':
       'Opening your email client... if nothing happened, email me directly at ',
-    'footer.tag': 'Crafted with Astro, Three.js & a lot of ',
+    'footer.tag': 'Crafted with Astro, custom WebGL & a lot of ',
     'footer.word': 'coffee.',
   },
 
@@ -336,11 +341,16 @@ export const translations = {
     'contact.form.subjectPh': '¿De qué se trata?',
     'contact.form.messagePh': 'Contame sobre tu proyecto...',
     'contact.submit': 'Enviar mensaje',
+    'contact.copy': 'Copiar mensaje',
+    'contact.sending': 'Enviando...',
+    'contact.success': 'Mensaje enviado — respondo pronto. ¡Gracias por escribir!',
+    'contact.copied': 'Mensaje copiado al portapapeles.',
+    'contact.copyFail': 'No se pudo copiar automáticamente. Seleccioná el texto y copialo manualmente.',
     'contact.hint':
-      'El formulario abre tu cliente de correo con el mensaje pre-cargado — no se almacena nada.',
+      'Los mensajes llegan directo a mi bandeja de entrada — sin cuenta ni registro.',
     'contact.opening':
       'Abriendo tu cliente de correo... si no pasa nada, escribime directamente a ',
-    'footer.tag': 'Hecho con Astro, Three.js y mucho ',
+    'footer.tag': 'Hecho con Astro, WebGL personalizado y mucho ',
     'footer.word': 'café.',
   },
 };

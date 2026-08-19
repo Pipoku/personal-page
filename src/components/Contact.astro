@@ -1,5 +1,5 @@
 ---
-import { profile } from '../data/cv.js';
+import { profile, siteConfig } from '../data/cv.js';
 ---
 
 <section id="contact" class="container">
@@ -28,7 +28,7 @@ import { profile } from '../data/cv.js';
       <a class="btn btn--ghost" href="/cv.pdf" data-i18n="nav.download" download>Download CV</a>
     </div>
 
-    <form id="contact-form" class="contact__form" data-email={profile.email} novalidate>
+    <form id="contact-form" class="contact__form" data-email={profile.email} data-form-key={siteConfig.web3FormsKey}>
       <label class="field">
         <span data-i18n="contact.form.name">Name</span>
         <input type="text" name="name" required placeholder="Your name" autocomplete="name" data-i18n-attr="placeholder" data-i18n="contact.form.namePh" />
@@ -45,7 +45,10 @@ import { profile } from '../data/cv.js';
         <span data-i18n="contact.form.message">Message</span>
         <textarea name="message" rows="5" required placeholder="Tell me about your project..." data-i18n-attr="placeholder" data-i18n="contact.form.messagePh"></textarea>
       </label>
-      <button type="submit" class="btn btn--primary contact__submit" data-i18n="contact.submit">Send message</button>
+      <div class="contact__actions">
+        <button type="submit" class="btn btn--primary contact__submit" data-i18n="contact.submit">Send message</button>
+        <button type="button" id="copy-msg" class="btn btn--ghost contact__copy" hidden data-i18n="contact.copy">Copy message</button>
+      </div>
       <p class="contact__hint" role="status" aria-live="polite" data-i18n="contact.hint">
         Form opens your email client with the message pre-filled — nothing is stored anywhere.
       </p>
@@ -143,7 +146,18 @@ import { profile } from '../data/cv.js';
 
   .contact__submit {
     align-self: flex-start;
+  }
+
+  .contact__actions {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    flex-wrap: wrap;
     margin-top: 0.3rem;
+  }
+
+  .contact__copy[hidden] {
+    display: none;
   }
 
   .contact__hint {
@@ -165,20 +179,73 @@ import { profile } from '../data/cv.js';
 
   const form = document.getElementById('contact-form');
   const status = document.querySelector('.contact__hint');
+  const copyBtn = document.getElementById('copy-msg');
   const email = form.dataset.email;
+  const formKey = form.dataset.formKey;
 
-  form.addEventListener('submit', (e) => {
+  const t = (key) => (translations[currentLang()] ?? translations[defaultLang])[key];
+
+  let lastBody = '';
+
+  function setStatus(key, extra = '') {
+    status.textContent = (t(key) ?? '') + extra;
+  }
+
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    const data = new FormData(form);
-    const subject = `[Portfolio] ${data.get('subject')}`;
-    const body =
-      `Name: ${data.get('name')}\nEmail: ${data.get('email')}\n\n` +
-      `${data.get('message')}`;
+    const el = (n) => form.elements.namedItem(n);
+    const name = el('name').value.trim();
+    const from = el('email').value.trim();
+    const subjectLine = el('subject').value.trim();
+    const message = el('message').value.trim();
+
+    const subject = `[Portfolio] ${subjectLine}`;
+    const body = `Name: ${name}\nEmail: ${from}\n\n${message}`;
+    lastBody = body;
+
+    copyBtn.hidden = false;
+
+    if (formKey) {
+      setStatus('contact.sending');
+      try {
+        const res = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify({
+            access_key: formKey,
+            subject,
+            from_name: name,
+            from_email: from,
+            message,
+          }),
+        });
+        const json = await res.json();
+        if (json.success) {
+          setStatus('contact.success');
+          form.reset();
+          copyBtn.hidden = true;
+          return;
+        }
+        throw new Error(json.message || 'error');
+      } catch {
+        // fall back to email client
+        window.location.href = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        setStatus('contact.opening', email);
+        return;
+      }
+    }
 
     window.location.href = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    setStatus('contact.opening', email);
+  });
 
-    const dict = translations[currentLang()] ?? translations[defaultLang];
-    status.textContent = dict['contact.opening'] + email;
+  copyBtn.addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText(lastBody);
+      setStatus('contact.copied');
+    } catch {
+      setStatus('contact.copyFail');
+    }
   });
 </script>

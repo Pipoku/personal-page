@@ -1,3 +1,7 @@
+export const siteConfig = {
+  web3FormsKey: '',
+};
+
 export const profile = {
   name: 'Renzo Emiliano Carletti',
   firstName: 'Renzo',
