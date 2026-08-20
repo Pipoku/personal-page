@@ -47,7 +47,7 @@
           <span class="arch__node-sub" data-i18n="workflow.arch.drupalSub">content model · RBAC · workflows</span>
         </div>
         <div class="arch__link">
-          <span class="arch__flow" aria-hidden="true"></span>
+          <span class="arch__flow-line" aria-hidden="true"><span class="arch__flow"></span></span>
           <span class="arch__link-label" data-i18n="workflow.arch.api">JSON:API · OAuth2</span>
         </div>
         <div class="arch__node">
@@ -167,8 +167,8 @@
     min-width: 90px;
   }
 
-  .arch__link::before {
-    content: '';
+  .arch__flow-line {
+    position: relative;
     width: 100%;
     height: 2px;
     background: linear-gradient(90deg, var(--accent-1), var(--accent-2));
@@ -226,11 +226,36 @@
     .arch__diagram {
       flex-direction: column;
     }
+    .arch__node {
+      align-self: stretch;
+      text-align: center;
+    }
     .arch__link {
       width: 100%;
       min-width: 0;
-      transform: rotate(90deg);
-      margin-block: -0.4rem;
+      flex-direction: row;
+      justify-content: center;
+      gap: 0.7rem;
+      margin-block: 0.2rem;
     }
+    .arch__flow-line {
+      width: 2px;
+      height: 32px;
+      background: linear-gradient(180deg, var(--accent-1), var(--accent-2));
+    }
+    .arch__flow {
+      top: 0;
+      left: -5px;
+      animation: arch-flow-v 2.2s linear infinite;
+    }
+    .arch__link-label {
+      white-space: normal;
+      max-width: 75%;
+    }
+  }
+
+  @keyframes arch-flow-v {
+    from { top: 0; opacity: 1; }
+    to { top: calc(100% - 12px); opacity: 1; }
   }
 </style>
