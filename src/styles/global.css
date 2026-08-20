@@ -152,6 +152,12 @@ button {
   pointer-events: none;
 }
 
+@media (max-width: 720px) {
+  .scroll-progress {
+    display: none;
+  }
+}
+
 .back-to-top {
   position: fixed;
   bottom: 1.4rem;
@@ -261,6 +267,15 @@ button {
 :root[data-theme='fun'] .hero__role,
 :root[data-theme='fun'] .kicker {
   color: #ffd93d;
+}
+
+@media (max-width: 720px) {
+  :root[data-theme='fun'] .hero__name,
+  :root[data-theme='fun'] .section-head h2 {
+    animation: none;
+    background-size: 100% 100%;
+    background-position: 0 0;
+  }
 }
 
 @keyframes fun-shimmer {
