@@ -32,7 +32,7 @@ import { profile, education, languages } from '../data/cv.js';
       <ul class="about__edu">
         {education.map((e, i) => (
           <li>
-            <span class="about__edu-school">{e.school}</span>
+            <span class="about__edu-school" data-i18n={`about.edu.${i}.school`}>{e.school}</span>
             <span class="about__edu-degree" data-i18n={`about.edu.${i}.degree`}>{e.degree}</span>
             <span class="about__edu-meta" data-i18n={`about.edu.${i}.detail`}>{e.detail}</span>
             <span class="about__edu-period" data-i18n={`about.edu.${i}.period`}>{e.period}</span>

@@ -315,8 +315,20 @@ section {
   padding-block: 6rem;
 }
 
+@media (max-width: 720px) {
+  section {
+    padding-block: 4.5rem;
+  }
+}
+
 .section-head {
   margin-bottom: 3rem;
+}
+
+@media (max-width: 720px) {
+  .section-head {
+    margin-bottom: 2.2rem;
+  }
 }
 
 .section-head .kicker {
