@@ -12,11 +12,6 @@ const links = [
 
 <header class="nav">
   <div class="container nav__inner">
-    <a href="#top" class="nav__logo" aria-label="Back to top">
-      <span class="nav__logo-mark">RC</span>
-      <span class="nav__logo-text">renzo<span class="nav__logo-accent">.carletti</span></span>
-    </a>
-
     <nav class="nav__links" aria-label="Primary">
       {links.map((l, i) => (
         <a href={l.href} data-i18n={l.i18n} style={`--i:${i}`}>{l.label}</a>
@@ -91,30 +86,6 @@ const links = [
     display: flex;
     align-items: center;
     justify-content: space-between;
-  }
-
-  .nav__logo {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.6rem;
-    font-weight: 700;
-    font-size: 1.05rem;
-  }
-
-  .nav__logo-mark {
-    display: grid;
-    place-items: center;
-    width: 2.2rem;
-    height: 2.2rem;
-    border-radius: 0.65rem;
-    font-family: var(--font-mono);
-    font-size: 0.8rem;
-    background: var(--accent-grad-solid);
-    color: #fff;
-  }
-
-  .nav__logo-accent {
-    color: var(--accent-2);
   }
 
   .nav__links {
