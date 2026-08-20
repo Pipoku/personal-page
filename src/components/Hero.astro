@@ -6,10 +6,6 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 <section id="top" class="hero">
   <canvas id="hero-canvas" class="hero__canvas" aria-hidden="true"></canvas>
 
-  <div class="hero__mascot" aria-hidden="true">
-    <img src={base + 'games/vivi.png'} alt="" width="330" height="438" class="hero__mage" loading="lazy" decoding="async" />
-  </div>
-
   <span class="hero__spark hero__spark--1" aria-hidden="true"></span>
   <span class="hero__spark hero__spark--2" aria-hidden="true"></span>
 
@@ -44,7 +40,7 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 
   <div class="container hero__inner">
     <p class="hero__hello reveal" style="--d:.05s" data-i18n="hero.hello">Hi, I'm</p>
-    <h1 class="hero__name reveal" style="--d:.15s">
+    <h1 class="hero__name reveal" data-fun-fx="hero" style="--d:.15s">
       Renzo
       <span class="hero__name-accent">Carletti</span>
     </h1>
@@ -288,33 +284,6 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
     color: var(--accent-2);
   }
 
-  /* Vivi-inspired black mage (fun theme only) */
-  .hero__mascot {
-    display: none;
-    position: absolute;
-    right: clamp(1rem, 6vw, 5rem);
-    bottom: 34vh;
-    z-index: 1;
-    animation: mascot-bob 3.4s ease-in-out infinite;
-    transform-origin: bottom center;
-  }
-
-  .hero__mage {
-    display: block;
-    width: clamp(96px, 14vw, 132px);
-    height: auto;
-    filter: drop-shadow(0 8px 22px rgba(0, 0, 0, 0.5));
-  }
-
-  html[data-theme='fun'] .hero__mascot {
-    display: block !important;
-  }
-
-  @keyframes mascot-bob {
-    0%, 100% { transform: translateY(0) rotate(-1.5deg); }
-    50% { transform: translateY(-10px) rotate(1.5deg); }
-  }
-
   .hero__spark {
     display: none;
     position: absolute;
@@ -324,10 +293,6 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
     background: radial-gradient(circle, #ffe9a8 0%, #ffd93d 45%, transparent 75%);
     z-index: 1;
     opacity: 0.75;
-  }
-
-  html[data-theme='fun'] .hero__mascot {
-    display: block !important;
   }
 
   html[data-theme='fun'] .hero__ow {
@@ -461,7 +426,6 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
   }
 
   @media (max-width: 720px), (max-height: 720px) {
-    .hero__mascot,
     .hero__spark,
     .hero__ow,
     .hero__campfire {

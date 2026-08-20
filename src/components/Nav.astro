@@ -283,15 +283,18 @@ const links = [
       -webkit-backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--glass-border);
       opacity: 0;
+      visibility: hidden;
       transform: translateY(-8px);
       pointer-events: none;
-      transition: opacity 0.3s var(--ease), transform 0.3s var(--ease);
+      transition: opacity 0.3s var(--ease), transform 0.3s var(--ease), visibility 0s linear 0.3s;
     }
 
     .nav__mobile.open {
       opacity: 1;
+      visibility: visible;
       transform: none;
       pointer-events: auto;
+      transition: opacity 0.3s var(--ease), transform 0.3s var(--ease);
     }
 
     .nav__mobile a {
@@ -320,6 +323,7 @@ const links = [
 
 <script>
   import { setLang } from '../scripts/i18n.js';
+  import { initFunFx, destroyFunFx } from '../scripts/fun-fx.js';
 
   const header = document.querySelector('.nav');
   const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 24);
@@ -377,6 +381,8 @@ const links = [
       b.classList.toggle('active', fun);
       b.setAttribute('aria-pressed', String(fun));
     });
+    if (fun) initFunFx();
+    else destroyFunFx();
   }
   setTheme(localStorage.getItem(THEME_KEY) === 'fun');
   themeBtns.forEach((b) => b.addEventListener('click', () => setTheme(!isFun())));

@@ -243,6 +243,34 @@ button {
   opacity: 0.22;
 }
 
+/* Fun theme: candy text effects */
+:root[data-theme='fun'] .hero__name,
+:root[data-theme='fun'] .section-head h2 {
+  background: linear-gradient(110deg, #ffd93d, #ff9f43, #ff6ec7, #7cffb2, #54c6ff, #ffd93d);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: fun-shimmer 7s linear infinite;
+}
+
+:root[data-theme='fun'] .hero__name {
+  animation: fun-shimmer 7s linear infinite, fun-breathe 4.5s ease-in-out infinite;
+}
+
+:root[data-theme='fun'] .hero__role,
+:root[data-theme='fun'] .kicker {
+  color: #ffd93d;
+}
+
+@keyframes fun-shimmer {
+  to { background-position: -300% 0; }
+}
+
+@keyframes fun-breathe {
+  50% { transform: scale(1.02); }
+}
+
 @keyframes drift-1 {
   to { transform: translate(14vw, 10vh) scale(1.15); }
 }
@@ -385,10 +413,16 @@ html.low-power .nav.scrolled {
     transform: none;
     transition: none;
   }
-  .hero__mascot,
   .hero__spark,
   .hero__ow,
   .hero__campfire {
+    animation: none;
+  }
+  :root[data-theme='fun'] .hero__name,
+  :root[data-theme='fun'] .section-head h2 {
+    background: none;
+    -webkit-text-fill-color: inherit;
+    color: inherit;
     animation: none;
   }
 }

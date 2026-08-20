@@ -56,6 +56,3 @@ Point the service at the repo. Build command `npm run build`, output `dist`. Imp
 - Rendering pauses when the hero is off-screen or the tab is hidden.
 - Latin-only font subsets, self-hosted variable fonts, `content-visibility` on sections.
 - `prefers-reduced-motion` disables all animation (including the WebGL scene).
-## Assets
-
-- `public/games/vivi.png`: hero mascot in fun theme — fan-art black mage (Vivi-style) from *Vivi Warrior Vector* (Liberated Pixel Cup, OpenGameArt, 2012), **CC-BY-SA 3.0**. Recolored to the classic black-mage palette (charcoal robe, glowing yellow eyes). Credit line in page footer; original: https://lpc.opengameart.org/content/vivi-warrior-vector
