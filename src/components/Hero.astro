@@ -433,6 +433,13 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
     }
   }
 
+  @media (max-width: 1000px) {
+    .hero__ow,
+    .hero__campfire {
+      display: none !important;
+    }
+  }
+
   @keyframes bob {
     0%, 100% { transform: translate(-50%, 0); }
     50% { transform: translate(-50%, 8px); }
