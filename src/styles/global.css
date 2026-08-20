@@ -290,8 +290,6 @@ button {
 
 section {
   padding-block: 6rem;
-  content-visibility: auto;
-  contain-intrinsic-size: auto 900px;
 }
 
 .section-head {
@@ -414,8 +412,7 @@ html.low-power .nav.scrolled {
     transition: none;
   }
   .hero__spark,
-  .hero__ow,
-  .hero__campfire {
+  .hero__ow {
     animation: none;
   }
   :root[data-theme='fun'] .hero__name,
