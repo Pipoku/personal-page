@@ -4,8 +4,11 @@ const prefersReducedMotion = () =>
   typeof window !== 'undefined' &&
   window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+const isMobile = () =>
+  typeof window !== 'undefined' && window.matchMedia('(max-width: 720px)').matches;
+
 export async function initFunFx() {
-  if (ctx || typeof window === 'undefined' || prefersReducedMotion()) return;
+  if (ctx || typeof window === 'undefined' || prefersReducedMotion() || isMobile()) return;
   const { gsap } = await import('gsap');
   const { ScrollTrigger } = await import('gsap/ScrollTrigger');
   gsap.registerPlugin(ScrollTrigger);
